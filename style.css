@@ -284,68 +284,79 @@ main {
 
 
 
-
+/* ici le bout de code avec une DA différente */
 
 .product-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 30px;
-      background: white;
-      border-radius: 20px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      overflow: hidden;
-      padding: 20px;
-    }
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  background: var(--bg-card);                        /* blanc → carte sombre */
+  border: 1px solid rgba(168, 85, 247, 0.2);         /* contour violet subtil */
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  padding: 20px;
+  margin-bottom: 30px;
+  margin-left: 20px;
+  margin-right: 20px;
+  transition: border-color 0.25s ease;
+}
 
-.product-images {
-      flex: 1 1 400px;
-    }
+.product-container:hover {
+  border-color: var(--neon-purple);                  /* cohérent avec .visual-card */
+}
+
+.product-images { flex: 1 1 400px; }
 
 .product-details {
-      flex: 1 1 400px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
+  flex: 1 1 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: var(--text-primary);                        /* texte clair */
+}
 
 .price {
-      font-size: 22px;
-      color: #ff4081;
-      font-weight: bold;
-      margin: 10px 0;
-    }
+  font-size: 22px;
+  color: var(--neon-pink);                           /* #ff4081 → variable de la DA */
+  font-weight: bold;
+  margin: 10px 0;
+  text-shadow: 0 0 16px rgba(255, 77, 166, 0.4);    /* lueur rose cohérente */
+}
 
 .shop-name {
-      font-size: 16px;
-      font-style: italic;
-      color: #555;
-      margin-bottom: 15px;
-    }
+  font-size: 16px;
+  font-style: italic;
+  color: var(--neon-cyan);                           /* gris neutre → cyan néon */
+  margin-bottom: 15px;
+}
 
 .description {
-      font-size: 15px;
-      color: #666;
-      line-height: 1.5;
-      margin-bottom: 20px;
-    }
+  font-size: 15px;
+  color: var(--text-muted);                          /* #666 → --text-muted */
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
 
 .actions {
-      display: flex;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
 
 .buy-btn {
-      background: blueviolet;
-      color: white;
-      text-decoration: none;
-      padding: 12px 25px;
-      border-radius: 30px;
-      font-size: 16px;
-      font-weight: bold;
-      transition: 0.3s;
-    }
+  background: var(--neon-purple);                    /* blueviolet → --neon-purple */
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: bold;
+  transition: all 0.25s ease;
+  box-shadow: 0 0 24px rgba(168, 85, 247, 0.4);     /* lueur violet comme .btn--primary */
+}
 
 .buy-btn:hover {
-      background: #a084e8;
-    }
+  background: #bf7fff;
+  box-shadow: 0 0 40px rgba(168, 85, 247, 0.7);
+  transform: translateY(-2px);                       /* même micro-interaction que .btn */
+}
