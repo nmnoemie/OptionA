@@ -30,43 +30,49 @@ $services = $result->fetchAll();
         
         <section id="menu" class="content-section">
             <h2>Notre Menu</h2>
-            <h3>Chichas Classiques & Premium</h3>
-            <ul>
-                <li>Double Pomme - 15€</li>
-                <li>Menthe Glaciale - 15€</li>
-                <li>Mélange "Ronronnement" (Fruits Rouges & Vanille) - 18€</li>
-            </ul>
-            <h3>Boissons & Snacks</h3>
-            <ul>
-                <li>Thé à la menthe traditionnel - 5€</li>
-                <li>Cocktail Félidé (Sans alcool) - 8€</li>
-            </ul>
-            <h3>Nos chats</h3>
-            <ul>
-                <li>Simba Le Maine Coon</li>
-                <li>Suzanne la RH(Le Sacré de Birmanie)</li>
-                <li>Kérubim (British Shorthair)</li>
-                <li>Gaston (Chartreux)</li>
-                <li>Atcham (Sphynx)</li>
-                <li>Garfield (Persan)</li>
-                <li>Nala (Siamois)</li>
-                <li>O'Malley (Chat Européen)</li>
-                <li>Duchesse (Angora Turc)</li>
-                <li>Salem (Bombay)</li>
+            
 
-            </ul>
-            <h3>Les Combos "Chichat" Parfaits</h3>
-            <p>Associez la personnalité de nos félins à nos meilleures saveurs pour une expérience inoubliable !</p>
+
+
             <?php foreach ($services as $service) : ?>
-                <div>
-                    <ul>
-                        <li>htmlspecialchars($service['nom'])</li>
-                        <li>$service['description']</li>
-                        <li>$service['durree_minutes']</li>
-                        <li>$service['prix_euro']</li>
+                <div class="product-container">
 
-                    </ul>
+                <!-- IMAGE DU PRODUIT -->
+                <div class="product-images">
+                    <!-- Tu pourras remplacer src par l'URL de ton image si tu l'ajoutes en BDD -->
+                    <img src="../img/placeholder.jpg" alt="<?= htmlspecialchars($service['nom']) ?>" style="max-width: 100%; border-radius: var(--radius);">
                 </div>
+
+                <!-- INFORMATIONS DU PRODUIT -->
+                <div class="product-details">
+
+                    <div>
+                        <h2><?= htmlspecialchars($service['nom']) ?></h2>
+
+
+                        <div class="price">
+                            <?= htmlspecialchars($service['prix_euro']) ?> €
+                        </div>
+
+                        <div class="shop-name">
+                            Durée : <?= htmlspecialchars($service['durree_minutes']) ?> min
+                        </div>
+
+                        <div class="description">
+                            <?= htmlspecialchars($service['description']) ?>
+                        </div>
+                    </div>
+
+                    <!-- BOUTONS -->
+                    <div class="actions">
+                        
+                    
+                            
+                        <button  class="buy-btn">Reserver</button>
+                        
+                    </div>
+                </div>
+            </div>
             <?php endforeach; ?>
         </section>
         
