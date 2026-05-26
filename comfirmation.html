@@ -65,7 +65,7 @@
       <tr><th>Statut</th>    <td> Confirmée</td></tr>
     </table>
     <br />
-    <p>Un email de confirmation vous sera envoyé à <strong><span id="succes-email"></span></strong>.</p>
+    <p>Un email de confirmation vous sera envoyé  <strong><span id="succes-email"></span></strong>.</p>
     <br />
     <button onclick="window.location.href='services.html'">Faire une nouvelle réservation</button>
     &nbsp;&nbsp;
@@ -74,8 +74,9 @@
 
   <script>
    
-    var idService  = sessionStorage.getItem('Id_services')  || '';
-    var nomService = sessionStorage.getItem('nom_services') || '';
+    var idServices  = sessionStorage.getItem('Id_services')  || '';
+    var iDdisponibilite  = sessionStorage.getItem('Id_disponibilite')  || '';
+    var idReservation = sessionStorage.getItem('Id_reservation') || '';
     var date       = sessionStorage.getItem('date_rdv')     || '';
     var heure      = sessionStorage.getItem('heure_rdv')    || '';
     var nom        = sessionStorage.getItem('nom_client')   || '';
