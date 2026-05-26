@@ -18,6 +18,7 @@ $reservations = $result2->fetchAll();
     <title>Chichats - Réservation de table</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
     <header class="hero">
@@ -102,10 +103,10 @@ $reservations = $result2->fetchAll();
                 '<?= htmlspecialchars($reservation['prenom']) ?>',
                 '<?= $reservation['date_reservation'] ?>',
                 '<?= $reservation['heure_reservation'] ?>'
-            )" title="Modifier" style="background:none; border:none; cursor:pointer; font-size:24px;">
-                <i class="fa-solid fa-pen fa-lg" style="color: rgb(253, 138, 154);"></i>
+            )" title="Modifier" style="background:none; border:none; cursor:pointer; font-size:16px;">
+                <i class="fa-solid fa-pen" style="color: rgb(255, 77, 166);"></i>
             </button>
-        </td>
+                        </td>
                     </tr>
                     
                 </tbody>
@@ -126,5 +127,52 @@ $reservations = $result2->fetchAll();
     <footer>
         <p>&copy;Chichats Since 1908. Tous droits réservés. | 123 Rue des Félins,Chauteau Rouge, Paris</p>
     </footer>
+
+    <div id="overlay" style="display:none; 
+         position:fixed; 
+         top:0; left:0; 
+         width:100%; height:100%; 
+         background:rgba(0,0,0,0.5); 
+         z-index:99;"> 
+    </div>
+
+    <div id="modale" style="display:none; 
+         position:fixed;
+         top:50%; left:50%;
+         transform:translate(-50%,-50%);
+         background:white;
+         padding:30px;
+         border-radius:8px;
+         z-index:100;
+         min-width:300px;">
+
+        <h2>Modifier la réservation</h2>
+
+        <form method="POST" action="update.php">
+
+            <input type="hidden" name="id" id="input-id">
+
+            <label>Nom :<br>
+                <input type="text" name="nom" id="input-nom">
+            </label><br><br>
+
+            <label>Prénom :<br>
+                <input type="text" name="prenom" id="input-prenom">
+            </label><br><br>
+
+            <label>Date :<br>
+                <input type="date" name="date_reservation" id="input-date">
+            </label><br><br>
+
+            <label>Heure :<br>
+                <input type="time" name="heure_reservation" id="input-heure">
+            </label><br><br>
+
+            <button type="submit">💾 Enregistrer</button> 
+            <button type="button" onclick="fermerModale()">✖ Annuler</button>
+
+        </form>
+    </div>
+<scritp src="js/update.js"></scritp>
 </body>
 </html>
