@@ -70,6 +70,33 @@ $services = $result->fetchAll();
             </div>
             <?php endforeach; ?>
         </section>
+        <h1>Liste de reservation</h1>
+        <section id="tableau" class="content-section">
+           <table border="1" cellpadding="10">
+                <thead>
+                    <tr>
+                        <th>id_reservation</th>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Dates de reservation</th>
+                        <th>Heure de reservation.</th>
+                
+                    </tr>
+                </thead>
+                <tbody>
+            
+                    <tr>
+                        <td>a</td>
+                        <td>b</td>
+                        <td>a<code></code></td>
+                        <td>d</td>
+                        <td>e</td>
+                    </tr>
+                    
+                </tbody>
+            </table> 
+        </section>
+    
         
         <section id="call-to-action" class="cta">
             <div class="cta__glow"></div>
