@@ -65,48 +65,6 @@ $services = $result->fetchAll();
             </div>
             <?php endforeach; ?>
         </section>
-        <h1>Liste de reservation</h1>
-        <section id="tableau" class="content-section">
-            <?php if (isset($_GET['success'])) : ?>
-    <p style="color: rgb(255, 77, 166);">✅ Modification effectuée avec succès !</p>
-        <?php endif; ?>
-           <table border="1" cellpadding="10">
-                <thead>
-                    <tr>
-                        <th>id_reservation</th>
-                        <th>Nom</th>
-                        <th>Prénom</th>
-                        <th>Dates de reservation</th>
-                        <th>Heure de reservation</th>
-                        <th>Modifier</th>
-                
-                    </tr>
-                </thead>
-                <tbody>
-    <tr>
-        <td>1</td>
-        <td>Dupont</td>
-        <td>Jean</td>
-        <td>2024-06-01</td>
-        <td>14:00</td>
-        <td>
-            <button onclick="ouvrirModale(
-                <?= $reservation['id_reservation'] ?>,
-                '<?= htmlspecialchars($reservation['nom']) ?>',
-                '<?= htmlspecialchars($reservation['prenom']) ?>',
-                '<?= $reservation['date_reservation'] ?>',
-                '<?= $reservation['heure_reservation'] ?>'
-            )" title="Modifier" style="background:none; border:none; cursor:pointer;">
-                <i class="fa-solid fa-pen" style="color: rgb(255, 77, 166);"></i>
-            </button>
-        </td>
-    </tr>
-</tbody>
-            </table> 
-        </section>
-    
-        
-    
         
         <section id="call-to-action" class="cta">
             <div class="cta__glow"></div>
@@ -121,38 +79,5 @@ $services = $result->fetchAll();
     <footer>
         <p>&copy;Chichats Since 1908. Tous droits réservés. | 123 Rue des Félins,Chauteau Rouge, Paris</p>
     </footer>
-
-    <div id="overlay" class="overlay"></div>
-
-    <div id="modale" class="modale">
-
-        <h2>Modifier la réservation</h2>
-
-        <form method="POST" action="update.php">
-
-            <input type="hidden" name="id" id="input-id">
-
-            <label>Nom :<br>
-                <input type="text" name="nom" id="input-nom">
-            </label><br><br>
-
-            <label>Prénom :<br>
-                <input type="text" name="prenom" id="input-prenom">
-            </label><br><br>
-
-            <label>Date :<br>
-                <input type="date" name="date_reservation" id="input-date">
-            </label><br><br>
-
-            <label>Heure :<br>
-                <input type="time" name="heure_reservation" id="input-heure">
-            </label><br><br>
-
-            <button type="submit">💾 Enregistrer</button> 
-            <button type="button" onclick="fermerModale()">✖ Annuler</button>
-
-        </form>
-    </div>
-<script src="js/update.js"></script>
 </body>
 </html>
