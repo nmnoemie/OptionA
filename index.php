@@ -42,12 +42,7 @@ $reservations = $result2->fetchAll();
             <?php foreach ($services as $service) : ?>
                 <div class="product-container">
 
-                <!-- IMAGE DU PRODUIT -->
-                <div class="product-images">
-                    <!-- Tu pourras remplacer src par l'URL de ton image si tu l'ajoutes en BDD -->
-                    <img src="../img/placeholder.jpg" alt="<?= htmlspecialchars($service['nom']) ?>" style="max-width: 100%; border-radius: var(--radius);">
-                    <img src="img/placeholder.jpg" alt="<?= htmlspecialchars($service['nom']) ?>" style="max-width: 100%; border-radius: var(--radius);">
-                </div>
+                
 
                 <!-- INFORMATIONS DU PRODUIT -->
                 <div class="product-details">
@@ -115,13 +110,15 @@ $reservations = $result2->fetchAll();
         </section>
     
         
+    
+        
         <section id="call-to-action" class="cta">
             <div class="cta__glow"></div>
             <div class="cta__content">
                 <h2 class="section-title">Qu'est-ce que tu attends ?</h2>
                 <p>Réserve tout de suite !</p>
                 
-                <a href="/reservation" class="btn btn--primary btn--lg"> reserver</a>
+                <a href="tel:+33123456789" class="btn btn--primary btn--lg">Reserver</a>
             </div>
         </section>
     </main>

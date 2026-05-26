@@ -1,9 +1,9 @@
 <?php
 require_once '../OptionA/data.php';
 //première requete
-$sql= "SELECT * FROM services";
+$sql= "SELECT * FROM reservation";
 $result = $pdo->query($sql);
-$services = $result->fetchAll();
+$reservations = $result->fetchAll();
 
 ?>
 
@@ -14,7 +14,7 @@ $services = $result->fetchAll();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chichats - Réservation de table</title>
     <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="style.css">
+    
 </head>
 <body>
     <header class="hero">
@@ -24,14 +24,13 @@ $services = $result->fetchAll();
         </div>
     </header>
     <main class="container">
-        <section id="a-propos" class="content-section">
-            <h2>Bienvenue chez Chichats</h2>
-            <p>Venez vous détendre en fumant une bonne chicha tout en profitant de la compagnie apaisante de nos adorables chats. Réservez votre table dès maintenant !</p>
-        </section>
+
         
         
         <section id="tableau">
-            <h1>Liste de reservation</h1>
+            <h1>Liste des reservations</h1>
+            <hr>
+
             <table border="1" cellpadding="10">
                 <thead>
                     <tr>
