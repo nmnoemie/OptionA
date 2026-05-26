@@ -100,11 +100,11 @@ $reservations = $result2->fetchAll();
         <td>14:00</td>
         <td>
             <button onclick="ouvrirModale(
-                1,
-                'Dupont',
-                'Jean',
-                '2024-06-01',
-                '14:00'
+                <?= $reservation['id_reservation'] ?>,
+                '<?= htmlspecialchars($reservation['nom']) ?>',
+                '<?= htmlspecialchars($reservation['prenom']) ?>',
+                '<?= $reservation['date_reservation'] ?>',
+                '<?= $reservation['heure_reservation'] ?>'
             )" title="Modifier" style="background:none; border:none; cursor:pointer;">
                 <i class="fa-solid fa-pen" style="color: rgb(255, 77, 166);"></i>
             </button>
