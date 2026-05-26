@@ -173,6 +173,6 @@ $reservations = $result2->fetchAll();
 
         </form>
     </div>
-<scritp src="js/update.js"></scritp>
+<script src="js/update.js"></script>
 </body>
 </html>
