@@ -106,7 +106,7 @@ main {
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    background-image: url("img/img_hero.png");
+    background-image: url("/OptionA/img/img_hero.png");
     background-size: cover;
     background-position: center;
 }
