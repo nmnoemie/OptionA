@@ -107,7 +107,7 @@ main {
     justify-content: center;
     overflow: hidden;
     background-color: var(--bg-dark);
-    background-image: url('../img/Gemini_Generated_Image_1qsh6b1qsh6b1qsh.png');
+    background-image: url('img/Gemini_Generated_Image_1qsh6b1qsh6b1qsh.png');
     background-size: cover;
     background-position: center;
 }
