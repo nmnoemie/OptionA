@@ -1,10 +1,10 @@
 <?php
 require_once '../OptionA/data.php'; 
 
-$id                = $_POST['id_reservation'];                
-$nom               = $_POST['nom_client'];               
-$date_reservation  = $_POST['date_rdv'];  
-$heure_reservation = $_POST['heure_rdv']; 
+$id_reservation         = $_POST['id_reservation'];                
+$nom_client             = $_POST['nom_client'];               
+$date_rdv               = $_POST['date_rdv'];  
+$heure_rdv              = $_POST['heure_rdv']; 
 
 $stmt = $pdo->prepare(" 
     UPDATE reservation  
@@ -12,8 +12,8 @@ $stmt = $pdo->prepare("
     WHERE id_reservation = ? 
 ");
 
-$stmt->execute([$nom, $date_reservation, $heure_reservation, $id]);
+$stmt->execute([$nom_client, $date_rdv, $heure_rdv, $id_reservation]);
 
-header("Location: index.php?success=1");
+header("Location: dashboard.php?success=1");
 exit;
 ?>

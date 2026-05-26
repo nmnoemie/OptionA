@@ -4,10 +4,6 @@ require_once '../OptionA/data.php';
 $sql= "SELECT * FROM services";
 $result = $pdo->query($sql);
 $services = $result->fetchAll();
-
-$sql2 = "SELECT * FROM reservation";
-$result2 = $pdo->query($sql2);
-$reservations = $result2->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -56,7 +52,7 @@ $reservations = $result2->fetchAll();
                         </div>
 
                         <div class="shop-name">
-                            Durée : <?= htmlspecialchars($service['durree_minutes']) ?> min
+                            Durée : <?= htmlspecialchars($service['duree_minutes']) ?> min
                         </div>
 
                         <div class="description">
@@ -82,7 +78,7 @@ $reservations = $result2->fetchAll();
                         <th>Prénom</th>
                         <th>Dates de reservation</th>
                         <th>Heure de reservation</th>
-                        <th>Actions</th>
+                        <th>Modifier</th>
                 
                     </tr>
                 </thead>
