@@ -76,6 +76,9 @@ $reservations = $result2->fetchAll();
         </section>
         <h1>Liste de reservation</h1>
         <section id="tableau" class="content-section">
+            <?php if (isset($_GET['success'])) : ?>
+    <p style="color: rgb(255, 77, 166);">✅ Modification effectuée avec succès !</p>
+        <?php endif; ?>
            <table border="1" cellpadding="10">
                 <thead>
                     <tr>
@@ -89,27 +92,25 @@ $reservations = $result2->fetchAll();
                     </tr>
                 </thead>
                 <tbody>
-            
-                    <tr>
-                        <td>a</td>
-                        <td>b</td>
-                        <td>a<code></code></td>
-                        <td>d</td>
-                        <td>e</td>
-                        <td>
+    <tr>
+        <td>1</td>
+        <td>Dupont</td>
+        <td>Jean</td>
+        <td>2024-06-01</td>
+        <td>14:00</td>
+        <td>
             <button onclick="ouvrirModale(
-                <?= $reservation['id_reservation'] ?>,
-                '<?= htmlspecialchars($reservation['nom']) ?>',
-                '<?= htmlspecialchars($reservation['prenom']) ?>',
-                '<?= $reservation['date_reservation'] ?>',
-                '<?= $reservation['heure_reservation'] ?>'
-            )" title="Modifier" style="background:none; border:none; cursor:pointer; font-size:16px;">
+                1,
+                'Dupont',
+                'Jean',
+                '2024-06-01',
+                '14:00'
+            )" title="Modifier" style="background:none; border:none; cursor:pointer;">
                 <i class="fa-solid fa-pen" style="color: rgb(255, 77, 166);"></i>
             </button>
-                        </td>
-                    </tr>
-                    
-                </tbody>
+        </td>
+    </tr>
+</tbody>
             </table> 
         </section>
     
@@ -128,23 +129,9 @@ $reservations = $result2->fetchAll();
         <p>&copy;Chichats Since 1908. Tous droits réservés. | 123 Rue des Félins,Chauteau Rouge, Paris</p>
     </footer>
 
-    <div id="overlay" style="display:none; 
-         position:fixed; 
-         top:0; left:0; 
-         width:100%; height:100%; 
-         background:rgba(0,0,0,0.5); 
-         z-index:99;"> 
-    </div>
+    <div id="overlay" class="overlay"></div>
 
-    <div id="modale" style="display:none; 
-         position:fixed;
-         top:50%; left:50%;
-         transform:translate(-50%,-50%);
-         background:white;
-         padding:30px;
-         border-radius:8px;
-         z-index:100;
-         min-width:300px;">
+    <div id="modale" class="modale">
 
         <h2>Modifier la réservation</h2>
 
