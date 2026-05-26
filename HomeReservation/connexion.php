@@ -4,22 +4,17 @@ $host= 'localhost';
 $dbname='chichats';
 $username='root';
 $password='';
-$charset= 'utf8mb4';
-
-$dsn= "mysql:host=$host;dbname=$dbname;charset=$charset";
-$options = [
-    // Active le lancer d'exceptions en cas d'erreur SQL (indispensable pour le debogage)
-    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-    // Définit le mode de récupération par défaut : ici, on récupère sous forme de tableau associatif
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    // Désactive l'émulation des requêtes préparées pour utiliser les vraies requêtes préparées de MySQL
-    PDO::ATTR_EMULATE_PREPARES   => false,
-];
 
 try {
-    $pdo = new PDO($dsn, $username, $password, $options);
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
-    die("Erreur de connexion à la base de données : ". $e->getMessage());
+    // Si on appelle ce fichier via Fetch, on renvoie du JSON, sinon un message simple
+    if (basename($_SERVER['PHP_SELF']) === 'enregistrer-reservation.php') {
+        header('Content-Type: application/json');
+        echo json_encode(['success' => false, 'message' => 'Erreur connexion BDD : ' . $e->getMessage()]);
+        exit;
+    }
+    die("Erreur de connexion à la base de données : " . $e->getMessage());
 }
-
 ?>
