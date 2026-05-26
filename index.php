@@ -14,6 +14,7 @@ $services = $result->fetchAll();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chichats - Réservation de table</title>
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header class="hero">
@@ -41,6 +42,7 @@ $services = $result->fetchAll();
                 <div class="product-images">
                     <!-- Tu pourras remplacer src par l'URL de ton image si tu l'ajoutes en BDD -->
                     <img src="../img/placeholder.jpg" alt="<?= htmlspecialchars($service['nom']) ?>" style="max-width: 100%; border-radius: var(--radius);">
+                    <img src="img/placeholder.jpg" alt="<?= htmlspecialchars($service['nom']) ?>" style="max-width: 100%; border-radius: var(--radius);">
                 </div>
 
                 <!-- INFORMATIONS DU PRODUIT -->
@@ -63,14 +65,7 @@ $services = $result->fetchAll();
                         </div>
                     </div>
 
-                    <!-- BOUTONS -->
-                    <div class="actions">
-                        
                     
-                            
-                        <button  class="buy-btn">Reserver</button>
-                        
-                    </div>
                 </div>
             </div>
             <?php endforeach; ?>
@@ -81,7 +76,8 @@ $services = $result->fetchAll();
             <div class="cta__content">
                 <h2 class="section-title">Qu'est-ce que tu attends ?</h2>
                 <p>Réserve tout de suite !</p>
-                <button type="button" class="btn btn--primary btn--lg">Réserver</button>
+                
+                <a href="/reservation" class="btn btn--primary btn--lg"> reserver</a>
             </div>
         </section>
     </main>
