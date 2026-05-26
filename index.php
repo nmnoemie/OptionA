@@ -74,7 +74,7 @@ $services = $result->fetchAll();
                 <h2 class="section-title">Qu'est-ce que tu attends ?</h2>
                 <p>Réserve tout de suite !</p>
                 
-                <a href="/reservation" class="btn btn--primary btn--lg"> reserver</a>
+                <a href="tel:+33123456789" class="btn btn--primary btn--lg">Reserver</a>
             </div>
         </section>
     </main>
