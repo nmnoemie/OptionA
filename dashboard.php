@@ -1,9 +1,24 @@
 <?php
-require_once '../OptionA/data.php';
-//première requete
-$sql= "SELECT * FROM reservation";
-$result = $pdo->query($sql);
-$reservations = $result->fetchAll();
+require_once 'data.php';
+
+// On récupère le terme de recherche s'il existe
+$search = isset($_GET['search']) ? trim($_GET['search']) : '';
+
+if (!empty($search)) {
+    // On filtre par nom de client ou par date si une recherche est lancée
+    $sql = "SELECT * FROM reservation WHERE nom_client LIKE :nom OR date_rdv LIKE :date";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([
+        'nom'  => '%' . $search . '%',
+        'date' => '%' . $search . '%'
+    ]);
+    $reservations = $stmt->fetchAll();
+} else {
+    // Sinon, on affiche tout par défaut
+    $sql = "SELECT * FROM reservation";
+    $result = $pdo->query($sql);
+    $reservations = $result->fetchAll();
+}
 
 ?>
 
@@ -13,7 +28,7 @@ $reservations = $result->fetchAll();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chichats - Réservation de table</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="CSS/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     
 </head>
@@ -29,7 +44,12 @@ $reservations = $result->fetchAll();
         
         
         <section id="tableau">
-            <h1>Liste des reservations</h1>
+            <h1>Liste des reservations</h1> <br>
+            <form method="GET" action="dashboard.php">
+                <input type="text" name="search" placeholder="Rechercher un nom ou une date (AAAA-MM-JJ)..." value="<?= htmlspecialchars($search) ?>"> <br><br>
+                <button type="submit" class="btn btn--primary btn--lg">Rechercher</button>
+            </form>
+            
             <hr>
 
             <table border="1" cellpadding="10">
@@ -75,7 +95,7 @@ $reservations = $result->fetchAll();
                 <h2 class="section-title">Qu'est-ce que tu attends ?</h2>
                 <p>Réserve tout de suite !</p>
                 
-                <a href="/reservation" class="btn btn--primary btn--lg"> reserver</a>
+                <a href="services.php" class="btn btn--primary btn--lg"> reserver</a>
             </div>
         </section>
     </main>
