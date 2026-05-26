@@ -13,8 +13,8 @@ $services = $result->fetchAll();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chichats - Réservation de table</title>
-    
-    <link rel="stylesheet" href="/CSS/style.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header class="hero">
@@ -29,43 +29,35 @@ $services = $result->fetchAll();
             <p>Venez vous détendre en fumant une bonne chicha tout en profitant de la compagnie apaisante de nos adorables chats. Réservez votre table dès maintenant !</p>
         </section>
         
-        <section id="menu" class="content-section">
-            <h2>Notre Menu</h2>
+        
+        <section id="tableau">
+            <h1>Liste de reservation</h1>
+            <table border="1" cellpadding="10">
+                <thead>
+                    <tr>
+                        <th>id_reservation</th>
+                        <th>Nom</th>
+                        <th>Dates de reservation</th>
+                        <th>Heure de reservation.</th>
+                
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($reservations as $reservation) : ?>
+                        <tr>
+                            <td><p><?= htmlspecialchars($reservation['Id_reservation']) ?></p></td>
+                            <td><p><?= htmlspecialchars($reservation['nom_client']) ?></p></td>
+                            <td><p><?= htmlspecialchars($reservation['date_rdv']) ?></p></td>
+                            <td><p><?= htmlspecialchars($reservation['heure_rdv']) ?></p></td>
+                           
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+                
+            </table>
             
 
-
-
-            <?php foreach ($services as $service) : ?>
-                <div class="product-container">
-
-                
-
-                <!-- INFORMATIONS DU PRODUIT -->
-                <div class="product-details">
-
-                    <div>
-                        <h2><?= htmlspecialchars($service['nom']) ?></h2>
-
-
-                        <div class="price">
-                            <?= htmlspecialchars($service['prix_euro']) ?> €
-                        </div>
-
-                        <div class="shop-name">
-                            Durée : <?= htmlspecialchars($service['durree_minutes']) ?> min
-                        </div>
-
-                        <div class="description">
-                            <?= htmlspecialchars($service['description']) ?>
-                        </div>
-                    </div>
-
-                    
-                </div>
-            </div>
-            <?php endforeach; ?>
         </section>
-        
     
         
         <section id="call-to-action" class="cta">
@@ -74,7 +66,7 @@ $services = $result->fetchAll();
                 <h2 class="section-title">Qu'est-ce que tu attends ?</h2>
                 <p>Réserve tout de suite !</p>
                 
-                <a href="tel:+33123456789" class="btn btn--primary btn--lg">Reserver</a>
+                <a href="/reservation" class="btn btn--primary btn--lg"> reserver</a>
             </div>
         </section>
     </main>

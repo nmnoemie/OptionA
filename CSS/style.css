@@ -360,15 +360,27 @@ main {
   transform: translateY(-2px);                       /* même micro-interaction que .btn */
 }
 
+/* Style pour la ligne horizontale (hr) */
+hr {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--neon-purple), transparent);
+    margin: 2rem 0;
+}
+
+/* Soulignement spécifique pour le titre du tableau de réservation */
+#tableau h1 {
+    display: inline-block;
+    text-decoration: underline;
+    text-decoration-color: var(--neon-pink); /* Utilise ton rose néon */
+    text-underline-offset: 12px;             /* Espace entre le texte et le trait */
+    margin-bottom: 2.5rem;
+}
+
 /*catalogue*/
 
-.search-bar {
-      flex: 1;
-      margin: 0 10px;
-    }
-
-.search-bar input {
-      width: 50%;
+input {
+      width: 99%;
       padding: 10px 5px;
       border: none;
       border-radius: 30px;
