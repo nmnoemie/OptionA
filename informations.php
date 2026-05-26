@@ -39,7 +39,7 @@
   <small>10 chiffres sans espaces (ex : 0612345678)</small>
 
   <br /><br />
-  <button onclick="window.location.href='dispo.php'">&larr; Retour</button>
+  <button onclick="window.location.href='creneau.php'">&larr; Retour</button>
   &nbsp;&nbsp;
   <button onclick="suivant()">Suivant →</button>
 
