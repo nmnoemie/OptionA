@@ -28,7 +28,8 @@ if (!empty($search)) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chichats - Réservation de table</title>
-    <link rel="stylesheet" href="/CSS/style.css">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     
 </head>
 <body>
@@ -57,7 +58,8 @@ if (!empty($search)) {
                         <th>id_reservation</th>
                         <th>Nom</th>
                         <th>Dates de reservation</th>
-                        <th>Heure de reservation.</th>
+                        <th>Heure de reservation</th>
+                        <th>Modifier</th>
                 
                     </tr>
                 </thead>
@@ -68,7 +70,15 @@ if (!empty($search)) {
                             <td><p><?= htmlspecialchars($reservation['nom_client']) ?></p></td>
                             <td><p><?= htmlspecialchars($reservation['date_rdv']) ?></p></td>
                             <td><p><?= htmlspecialchars($reservation['heure_rdv']) ?></p></td>
-                           
+                           <td>
+                                <button onclick="ouvrirModale(
+                                    <?= $reservation['Id_reservation'] ?>,
+                                    '<?= htmlspecialchars($reservation['nom_client']) ?>',
+                                    '<?= $reservation['date_rdv'] ?>',
+                                    '<?= $reservation['heure_rdv'] ?>'
+                                )" title="Modifier" style="background:none; border:none; cursor:pointer;">
+                                    <i class="fa-solid fa-pen" style="color: rgb(255, 77, 166);"></i>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -92,5 +102,58 @@ if (!empty($search)) {
     <footer>
         <p>&copy;Chichats Since 1908. Tous droits réservés. | 123 Rue des Félins,Chauteau Rouge, Paris</p>
     </footer>
+    <div id="overlay" class="overlay"></div>
+
+    <div id="modale" class="modale">
+
+        <h2>Modifier la réservation</h2>
+
+        <form method="POST" action="update.php">
+
+            <input type="hidden" name="id_reservation" id="input-id">
+
+            <label>Nom :<br>
+                <input type="text" name="nom_client" id="input-nom">
+            </label><br><br>
+
+            <label>Date :<br>
+                <input type="date" name="date_rdv" id="input-date">
+            </label><br><br>
+
+            <label>Heure :<br>
+                <select name="heure_rdv" id="input-heure">
+                    <option value="" selected disabled >Sélectionnez une heure</option>
+                    <option value="09:00">09:00</option>
+                    <option value="09:30">09:30</option>
+                    <option value="10:00">10:00</option>
+                    <option value="10:30">10:30</option>
+                    <option value="11:00">11:00</option>
+                    <option value="11:30">11:30</option>
+                    <option value="12:00">12:00</option>
+                    <option value="12:30">12:30</option>
+                    <option value="13:00">13:00</option>
+                    <option value="13:30">13:30</option>
+                    <option value="14:00">14:00</option>
+                    <option value="14:30">14:30</option>
+                    <option value="15:00">15:00</option>
+                    <option value="15:30">15:30</option>
+                    <option value="16:00">16:00</option>
+                    <option value="16:30">16:30</option>
+                    <option value="17:00">17:00</option>
+                    <option value="17:30">17:30</option>
+                    <option value="18:00">18:00</option>
+                    <option value="18:30">18:30</option>
+                    <option value="19:00">19:00</option>
+                    <option value="19:30">19:30</option>
+                    <option value="20:00">20:00</option>   
+                </select>
+            </label><br><br>
+
+            <button type="submit">💾 Enregistrer</button> 
+            <button type="button" onclick="fermerModale()">✖ Annuler</button>
+
+        </form>
+    </div>
+<script src="js/update.js"></script>
 </body>
 </html>

@@ -13,7 +13,7 @@
     <a href="services.php">Réservation</a>
   </nav>
 
-  <hr />
+  <hr/>
   <h1>Chichats – Réservation en ligne</h1>
 
   <p>
