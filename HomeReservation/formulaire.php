@@ -1,5 +1,4 @@
 <?php
-// 1. On inclut le fichier de connexion créé à l'étape 3
 require_once 'connexion.php';
 
 // 2. On vérifie si le formulaire a été soumis

@@ -6,16 +6,75 @@
     <title>HomeReservation</title>
 </head>
 <body>
-    <header>
+    <script>
+    var idServices = sessionStorage.getItem('Id_services')      || '';
+  var iDdisponibilite = sessionStorage.getItem('Id_disponibilite') || '';
+  var idReservation   = sessionStorage.getItem('Id_reservation')   || '';
+  var date            = sessionStorage.getItem('date_rdv')         || '';
+  var heure           = sessionStorage.getItem('heure_rdv')        || '';
+  var nom             = sessionStorage.getItem('nom_client')       || '';
+  var email           = sessionStorage.getItem('email')            || '';
+  var tel             = sessionStorage.getItem('tel')              || '';
+  var nomService      = sessionStorage.getItem('nom_service')      || idServices;
+  document.getElementById('recap-service').textContent = nomService;
+  document.getElementById('recap-date').textContent    = date;
+  document.getElementById('recap-heure').textContent   = heure;
+  document.getElementById('recap-nom').textContent     = nom;
+  document.getElementById('recap-email').textContent   = email;
+  document.getElementById('recap-tel').textContent     = tel;
 
-    </header>
+  function confirmer() {
+    if (!document.getElementById('conditions').checked) {
+      alert('Veuillez accepter les conditions générales.');
+      return;
+    }
 
-    <main>
+    // 1. Préparation des données à envoyer au PHP
+    var donneesReservation = {
+      id_service: idServices,
+      id_dispo: iDdisponibilite,
+      date_rdv: date,
+      heure_rdv: heure,
+      nom_client: nom,
+      email_client: email,
+      tel_client: tel
+    };
 
-    </main>
+    // 2. Envoi des données vers le fichier PHP avec Fetch
+    fetch('enregistrer_reservation.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(donneesReservation) // On transforme l'objet en texte JSON
+    })
+    .then(response => response.json()) // On attend la réponse du PHP au format JSON
+    .then(data => {
+      if (data.success) {
+        // Si le PHP a réussi à insérer en BDD :
+        document.getElementById('succes-nom').textContent     = nom;
+        document.getElementById('succes-service').textContent = nomService;
+        document.getElementById('succes-date').textContent    = date;
+        document.getElementById('succes-heure').textContent   = heure;
+        document.getElementById('succes-email').textContent   = email;
 
-    <footer>
-        
-    </footer>
+        // Bascule des sections affichées
+        document.getElementById('section-recap').style.display  = 'none';
+        document.getElementById('section-succes').style.display = 'block';
+
+        // Nettoyage de la session
+        sessionStorage.clear();
+      } else {
+        alert("Erreur lors de l'enregistrement : " + data.message);
+      }
+    })
+    .catch(error => {
+      console.error('Erreur:', error);
+      alert("Une erreur technique est survenue.");
+    });
+  }
+</script>
+
+    </script>
 </body>
 </html>
