@@ -3,7 +3,7 @@
 $host= 'localhost';
 $dbname='chichats';
 $username='root';
-$password='';
+$password='root';
 $charset= 'utf8mb4';
 
 $dsn= "mysql:host=$host;dbname=$dbname;charset=$charset";
@@ -22,4 +22,4 @@ try {
     die("Erreur de connexion à la base de données : ". $e->getMessage());
 }
 
-?>
+?> 
