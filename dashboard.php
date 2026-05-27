@@ -79,7 +79,7 @@ if (!empty($search)) {
         }
 
         .btn--success-github:hover {
-            background-color: #2c974b; /* Vert un peu plus foncé au survol */
+            background-color: #207238; /* Vert un peu plus foncé au survol */
         }
     </style>
 </head>
@@ -101,7 +101,7 @@ if (!empty($search)) {
             
             <hr>
             <?php if (isset($_GET['success'])) : ?>
-                <p class="success-msg">✅ Modification effectuée avec succès !</p>
+                <p class="success-msg"> Modification effectuée avec succès !</p>
             <?php endif; ?>
             <table class="reservation-table">
                 <thead>
@@ -204,7 +204,7 @@ if (!empty($search)) {
             </label><br><br>
 
             <div class="modale__actions">
-                <button type="submit">💾 Enregistrer</button>
+                <button type="submit">Enregistrer</button>
                 <button type="button" onclick="fermerModale()">✖ Annuler</button>
             </div>
 
