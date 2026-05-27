@@ -1,5 +1,6 @@
 <?php
 require_once 'data.php';
+<<<<<<< HEAD
 
 // On récupère le terme de recherche s'il existe
 $search = isset($_GET['search']) ? trim($_GET['search']) : '';
@@ -19,7 +20,27 @@ if (!empty($search)) {
     $result = $pdo->query($sql);
     $reservations = $result->fetchAll();
 }
+=======
+>>>>>>> feature/HTML
 
+// On récupère le terme de recherche s'il existe
+$search = isset($_GET['search']) ? trim($_GET['search']) : '';
+
+if (!empty($search)) {
+    // On filtre par nom de client ou par date si une recherche est lancée
+    $sql = "SELECT * FROM reservation WHERE nom_client LIKE :nom OR date_rdv LIKE :date";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([
+        'nom'  => '%' . $search . '%',
+        'date' => '%' . $search . '%'
+    ]);
+    $reservations = $stmt->fetchAll();
+} else {
+    // Sinon, on affiche tout par défaut
+    $sql = "SELECT * FROM reservation";
+    $result = $pdo->query($sql);
+    $reservations = $result->fetchAll();
+}
 ?>
 
 <!DOCTYPE html>
@@ -30,6 +51,30 @@ if (!empty($search)) {
     <title>Chichats - Réservation de table</title>
     <link rel="stylesheet" href="CSS/style.css" >
     
+    <style>
+        .form-actions-container {
+            display: flex;
+            justify-content: space-between; /* Pousse les éléments aux deux opposés */
+            align-items: center; /* Aligne verticalement les deux boutons */
+            width: 100%;
+        }
+
+        .btn--success-github {
+            background-color: #2da44e; /* Le vert officiel de GitHub */
+            color: #ffffff;
+            border: 1px solid rgba(27, 31, 36, 0.15);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn--success-github:hover {
+            background-color: #2c974b; /* Vert un peu plus foncé au survol */
+        }
+    </style>
 </head>
 <body>
     <header class="hero">
@@ -40,13 +85,23 @@ if (!empty($search)) {
     </header>
     <main class="container">
 
-        
-        
         <section id="tableau">
             <h1>Liste des reservations</h1> <br>
+<<<<<<< HEAD
             <form method="GET" action="dashboard.php">
                 <input type="text" name="search" placeholder="Rechercher un nom ou une date (AAAA-MM-JJ)..." value="<?= htmlspecialchars($search) ?>"> <br><br>
                 <button type="submit" class="btn btn--primary btn--lg">Rechercher</button>
+=======
+            
+            <form method="GET" action="dashboard.php">
+                <input type="text" name="search" placeholder="Rechercher un nom ou une date (AAAA-MM-JJ)..." value="<?= htmlspecialchars($search) ?>"> <br><br>
+                
+                <div class="form-actions-container">
+                    <button type="submit" class="btn btn--primary btn--lg">Rechercher</button>
+                    
+                    <a href="services.php" class="btn btn--success-github btn--lg">New</a>
+                </div>
+>>>>>>> feature/HTML
             </form>
             
             <hr>
@@ -58,7 +113,6 @@ if (!empty($search)) {
                         <th>Nom</th>
                         <th>Dates de reservation</th>
                         <th>Heure de reservation.</th>
-                
                     </tr>
                 </thead>
                 <tbody>
@@ -68,23 +122,22 @@ if (!empty($search)) {
                             <td><p><?= htmlspecialchars($reservation['nom_client']) ?></p></td>
                             <td><p><?= htmlspecialchars($reservation['date_rdv']) ?></p></td>
                             <td><p><?= htmlspecialchars($reservation['heure_rdv']) ?></p></td>
-                           
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
-                
             </table>
-            
 
         </section>
     
-        
         <section id="call-to-action" class="cta">
             <div class="cta__glow"></div>
             <div class="cta__content">
                 <h2 class="section-title">Qu'est-ce que tu attends ?</h2>
                 <p>Réserve tout de suite !</p>
+<<<<<<< HEAD
                 
+=======
+>>>>>>> feature/HTML
                 <a href="services.php" class="btn btn--primary btn--lg"> reserver</a>
             </div>
         </section>
