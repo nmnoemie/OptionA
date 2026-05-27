@@ -29,6 +29,24 @@ if (!empty($search)) {
     $reservations = $result->fetchAll();
 }
 
+// On récupère le terme de recherche s'il existe
+$search = isset($_GET['search']) ? trim($_GET['search']) : '';
+
+if (!empty($search)) {
+    // On filtre par nom de client ou par date si une recherche est lancée
+    $sql = "SELECT * FROM reservation WHERE nom_client LIKE :nom OR date_rdv LIKE :date";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([
+        'nom'  => '%' . $search . '%',
+        'date' => '%' . $search . '%'
+    ]);
+    $reservations = $stmt->fetchAll();
+} else {
+    // Sinon, on affiche tout par défaut
+    $sql = "SELECT * FROM reservation";
+    $result = $pdo->query($sql);
+    $reservations = $result->fetchAll();
+}
 ?>
 
 <!DOCTYPE html>
@@ -40,6 +58,30 @@ if (!empty($search)) {
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     
+    <style>
+        .form-actions-container {
+            display: flex;
+            justify-content: space-between; /* Pousse les éléments aux deux opposés */
+            align-items: center; /* Aligne verticalement les deux boutons */
+            width: 100%;
+        }
+
+        .btn--success-github {
+            background-color: #2da44e; /* Le vert officiel de GitHub */
+            color: #ffffff;
+            border: 1px solid rgba(27, 31, 36, 0.15);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn--success-github:hover {
+            background-color: #2c974b; /* Vert un peu plus foncé au survol */
+        }
+    </style>
 </head>
 <body>
     <header class="hero">
@@ -50,8 +92,6 @@ if (!empty($search)) {
     </header>
     <main class="container">
 
-        
-        
         <section id="tableau">
             <h1>Liste des reservations</h1> <br>
             <form method="GET" action="dashboard.php">
@@ -99,13 +139,10 @@ if (!empty($search)) {
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
-                
             </table>
-            
 
         </section>
     
-        
         <section id="call-to-action" class="cta">
             <div class="cta__glow"></div>
             <div class="cta__content">
