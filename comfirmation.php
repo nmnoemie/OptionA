@@ -42,9 +42,9 @@ mysqli_close($conn);
 <body>
 
   <nav>
-    <a href="index.html">Accueil</a> |
-    <a href="localisation.html">Localisation</a> |
-    <a href="services.html">Réservation</a>
+    <a href="index.php">Accueil</a> |
+    <a href="localisation.php">Localisation</a> |
+    <a href="services.php">Réservation</a>
   </nav>
 
   <hr />
@@ -98,21 +98,25 @@ mysqli_close($conn);
   </div>
 
   
-  <div id="section-succes" style="display:<?php echo $enregistre ? 'block' : 'none'; ?>;">
+  <div id="section-succes" style="display:none;">
     <h2> Réservation confirmée !</h2>
-    <p>Merci, votre réservation a bien été enregistrée.</p>
+    <p>Merci <strong><span id="succes-nom"></span></strong>, votre réservation a bien été enregistrée.</p>
     <table border="1" cellpadding="8" cellspacing="0">
-      <tr><th>Statut</th><td> Confirmée</td></tr>
+      <tr><th>Service</th>   <td id="succes-service">–</td></tr>
+      <tr><th>Date</th>      <td id="succes-date">–</td></tr>
+      <tr><th>Heure</th>     <td id="succes-heure">–</td></tr>
+      <tr><th>Statut</th>    <td> Confirmée</td></tr>
     </table>
     <br />
-    <p>Un email de confirmation vous sera envoyé.</p>
+    <p>Un email de confirmation vous sera envoyé à <strong><span id="succes-email"></span></strong>.</p>
     <br />
-    <button onclick="window.location.href='services.html'">Faire une nouvelle réservation</button>
+    <button onclick="window.location.href='services.php'">Faire une nouvelle réservation</button>
     &nbsp;&nbsp;
-    <button onclick="window.location.href='index.html'">Retour à l'accueil</button>
+    <button onclick="window.location.href='index.php'">Retour à l'accueil</button>
   </div>
 
   <script>
+   
     var idService  = sessionStorage.getItem('Id_services')  || '';
     var nomService = sessionStorage.getItem('nom_services') || '';
     var date       = sessionStorage.getItem('date_rdv')     || '';
@@ -141,8 +145,19 @@ mysqli_close($conn);
         alert('Veuillez accepter les conditions générales.');
         return;
       }
+
+      
+      document.getElementById('succes-nom').textContent     = nom;
+      document.getElementById('succes-service').textContent = nomService;
+      document.getElementById('succes-date').textContent    = date;
+      document.getElementById('succes-heure').textContent   = heure;
+      document.getElementById('succes-email').textContent   = email;
+
+      
+      document.getElementById('section-recap').style.display  = 'none';
+      document.getElementById('section-succes').style.display = 'block';
+
       sessionStorage.clear();
-      document.getElementById('form-reservation').submit();
     }
   </script>
 

@@ -8,9 +8,9 @@
 <body>
 
   <nav>
-    <a href="index.html">Accueil</a> |
-    <a href="localisation.html">Localisation</a> |
-    <a href="services.html">Réservation</a>
+    <a href="index.php">Accueil</a> |
+    <a href="localisation.php">Localisation</a> |
+    <a href="services.php">Réservation</a>
   </nav>
 
   <hr />
@@ -52,7 +52,7 @@
       }
       sessionStorage.setItem('Id_services', sel.value);
       sessionStorage.setItem('nom_services', sel.options[sel.selectedIndex].text);
-      window.location.href = 'creneau.html';
+      window.location.href = 'creneau.php';
     }
   </script>
 

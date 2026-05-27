@@ -8,12 +8,12 @@
 <body>
 
   <nav>
-    <a href="index.html">Accueil</a> |
-    <a href="localisation.html">Localisation</a> |
-    <a href="services.html">Réservation</a>
+    <a href="index.php">Accueil</a> |
+    <a href="localisation.php">Localisation</a> |
+    <a href="services.php">Réservation</a>
   </nav>
 
-  <hr />
+  <hr/>
   <h1>Chichats – Réservation en ligne</h1>
 
   <p>
@@ -39,9 +39,9 @@
   <small>10 chiffres sans espaces (ex : 0612345678)</small>
 
   <br /><br />
-  <button onclick="window.location.href='creneau.html'">&larr; Retour</button>
+  <button onclick="window.location.href='creneau.php'">&larr; Retour</button>
   &nbsp;&nbsp;
-  <button onclick="suivant()">Suivant &rarr;</button>
+  <button onclick="suivant()">Suivant →</button>
 
   <script>
     document.getElementById('nom_client').value = sessionStorage.getItem('nom_client') || '';
@@ -58,7 +58,7 @@
       sessionStorage.setItem('nom_client', nom);
       sessionStorage.setItem('email',      email);
       sessionStorage.setItem('tel',        tel);
-      window.location.href = 'comfirmation.html';
+      window.location.href = 'comfirmation.php';
     }
   </script>
 
