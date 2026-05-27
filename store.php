@@ -12,10 +12,8 @@ $id_services  = $_POST['Id_services'];
 // Statut par défaut pour une nouvelle réservation
 $statut_defaut = 'en_attente';
 
-// Vérification que tous les champs sont remplis
-if(empty($nom_client)  empty($email) 
- empty($tel)  empty($date_rdv) 
- empty($heure_rdv) || empty($id_services)) {
+// Vérification que tous les champs sont remplis (CORRIGÉ)
+if(empty($nom_client) || empty($email) || empty($tel) || empty($date_rdv) || empty($heure_rdv) || empty($id_services)) {
     header("Location: create.php?error=1");
     exit;
 }
