@@ -60,7 +60,9 @@ if (!empty($search)) {
             </form>
             
             <hr>
-
+            <?php if (isset($_GET['success'])) : ?>
+                <p style="color: rgb(255, 77, 166);">✅ Modification effectuée avec succès !</p>
+            <?php endif; ?>
             <table border="1" cellpadding="10">
                 <thead>
                     <tr>

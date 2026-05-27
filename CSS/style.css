@@ -107,7 +107,7 @@ main {
     justify-content: center;
     overflow: hidden;
     background-color: var(--bg-dark);
-    background-image: url('img_hero.png');
+    background-image: url('../img/img_hero.png');
     background-size: cover;
     background-position: center;
 }
@@ -417,4 +417,8 @@ input {
     z-index:100;
     min-width:300px;
     color: black;
+}
+td {
+    text-align: center;
+    vertical-align: middle;
 }
