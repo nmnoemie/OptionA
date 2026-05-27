@@ -88,7 +88,7 @@ if (!empty($search)) {
                                     '<?= $reservation['date_rdv'] ?>',
                                     '<?= $reservation['heure_rdv'] ?>'
                                 )" title="Modifier" style="background:none; border:none; cursor:pointer;">
-                                    <i class="fa-solid fa-pen" style="color: rgb(255, 77, 166);"></i>
+                                    <i class="fa-solid fa-pen fa-xl" style="color: rgb(255, 77, 166);"></i>
                                 </button>
                             </td>
                             <td>
