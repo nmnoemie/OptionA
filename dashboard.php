@@ -1,8 +1,5 @@
 <?php
 require_once 'data.php';
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 
 // Suppression si demandée
 if (isset($_GET['supprimer'])) {
@@ -12,7 +9,6 @@ if (isset($_GET['supprimer'])) {
     header('Location: dashboard.php');
     exit();
 }
->>>>>>> 25d65379ede50b06bbcd673a1df673a8ee537fba
 
 // On récupère le terme de recherche s'il existe
 $search = isset($_GET['search']) ? trim($_GET['search']) : '';
@@ -32,11 +28,6 @@ if (!empty($search)) {
     $result = $pdo->query($sql);
     $reservations = $result->fetchAll();
 }
-<<<<<<< HEAD
-=======
->>>>>>> feature/HTML
-=======
->>>>>>> 25d65379ede50b06bbcd673a1df673a8ee537fba
 
 // On récupère le terme de recherche s'il existe
 $search = isset($_GET['search']) ? trim($_GET['search']) : '';
@@ -103,27 +94,9 @@ if (!empty($search)) {
 
         <section id="tableau">
             <h1>Liste des reservations</h1> <br>
-<<<<<<< HEAD
-<<<<<<< HEAD
-            <form method="GET" action="dashboard.php">
-                <input type="text" name="search" placeholder="Rechercher un nom ou une date (AAAA-MM-JJ)..." value="<?= htmlspecialchars($search) ?>"> <br><br>
-                <button type="submit" class="btn btn--primary btn--lg">Rechercher</button>
-=======
-            
-            <form method="GET" action="dashboard.php">
-                <input type="text" name="search" placeholder="Rechercher un nom ou une date (AAAA-MM-JJ)..." value="<?= htmlspecialchars($search) ?>"> <br><br>
-                
-                <div class="form-actions-container">
-                    <button type="submit" class="btn btn--primary btn--lg">Rechercher</button>
-                    
-                    <a href="services.php" class="btn btn--success-github btn--lg">New</a>
-                </div>
->>>>>>> feature/HTML
-=======
             <form method="GET" action="dashboard.php">
                 <input type="text" name="search" placeholder="Rechercher un nom ou une date (AAAA-MM-JJ)..." value="<?= htmlspecialchars($search) ?>">
                 <button type="submit" class="btn btn--primary">Rechercher</button>
->>>>>>> 25d65379ede50b06bbcd673a1df673a8ee537fba
             </form>
             
             <hr>
@@ -155,7 +128,7 @@ if (!empty($search)) {
                                     '<?= $reservation['date_rdv'] ?>',
                                     '<?= $reservation['heure_rdv'] ?>'
                                 )" title="Modifier" style="background:none; border:none; cursor:pointer;">
-                                    <i class="fa-solid fa-pen fa-xl" style="color: rgb(255, 77, 166);"></i>
+                                    <i class="fa-solid fa-pen" style="color: rgb(255, 77, 166);"></i>
                                 </button>
                             </td>
                             <td>
@@ -175,14 +148,7 @@ if (!empty($search)) {
             <div class="cta__content">
                 <h2 class="section-title">Qu'est-ce que tu attends ?</h2>
                 <p>Réserve tout de suite !</p>
-<<<<<<< HEAD
-<<<<<<< HEAD
                 
-=======
->>>>>>> feature/HTML
-=======
-                
->>>>>>> 25d65379ede50b06bbcd673a1df673a8ee537fba
                 <a href="services.php" class="btn btn--primary btn--lg"> reserver</a>
             </div>
         </section>
