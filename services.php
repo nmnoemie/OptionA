@@ -38,7 +38,7 @@
   </select>
 
   <br /><br />
-  <button onclick="suivant()">Suivant →</button>
+  <button onclick="suivant()">Suivant &rarr;</button>
 
   <script>
     var sel = document.getElementById('services');

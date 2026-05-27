@@ -1,6 +1,15 @@
 <?php
 require_once 'data.php';
 
+// Suppression si demandée
+if (isset($_GET['supprimer'])) {
+    $id = $_GET['supprimer'];
+    $stmt = $pdo->prepare("DELETE FROM reservation WHERE Id_reservation = ?");
+    $stmt->execute([$id]);
+    header('Location: dashboard.php');
+    exit();
+}
+
 // On récupère le terme de recherche s'il existe
 $search = isset($_GET['search']) ? trim($_GET['search']) : '';
 
@@ -60,7 +69,7 @@ if (!empty($search)) {
                         <th>Dates de reservation</th>
                         <th>Heure de reservation</th>
                         <th>Modifier</th>
-                
+                        <th>Supprimer</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -78,6 +87,12 @@ if (!empty($search)) {
                                     '<?= $reservation['heure_rdv'] ?>'
                                 )" title="Modifier" style="background:none; border:none; cursor:pointer;">
                                     <i class="fa-solid fa-pen" style="color: rgb(255, 77, 166);"></i>
+                                </button>
+                            </td>
+                            <td>
+                                <button onclick="confirmerSuppression(<?= $reservation['Id_reservation'] ?>)" title="Supprimer" style="background:none; border:none; cursor:pointer;">
+                                    <i class="fa-solid fa-xmark" style="color: rgb(255, 77, 166);"></i>
+                                </button>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -154,6 +169,14 @@ if (!empty($search)) {
 
         </form>
     </div>
+
+<script>
+function confirmerSuppression(id) {
+    if (confirm('Êtes-vous sûr de vouloir supprimer cette réservation ?')) {
+        window.location.href = 'dashboard.php?supprimer=' + id;
+    }
+}
+</script>
 <script src="js/update.js"></script>
 </body>
 </html>
