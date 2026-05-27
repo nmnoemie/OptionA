@@ -1,6 +1,7 @@
 <?php
 require_once 'data.php';
 
+<<<<<<< HEAD
 // Suppression si demandée
 if (isset($_GET['supprimer'])) {
     $id = $_GET['supprimer'];
@@ -10,6 +11,8 @@ if (isset($_GET['supprimer'])) {
     exit();
 }
 
+=======
+>>>>>>> main
 // On récupère le terme de recherche s'il existe
 $search = isset($_GET['search']) ? trim($_GET['search']) : '';
 
@@ -69,7 +72,11 @@ if (!empty($search)) {
                         <th>Dates de reservation</th>
                         <th>Heure de reservation</th>
                         <th>Modifier</th>
+<<<<<<< HEAD
                         <th>Supprimer</th>
+=======
+                
+>>>>>>> main
                     </tr>
                 </thead>
                 <tbody>
@@ -87,12 +94,15 @@ if (!empty($search)) {
                                     '<?= $reservation['heure_rdv'] ?>'
                                 )" title="Modifier" style="background:none; border:none; cursor:pointer;">
                                     <i class="fa-solid fa-pen" style="color: rgb(255, 77, 166);"></i>
+<<<<<<< HEAD
                                 </button>
                             </td>
                             <td>
                                 <button onclick="confirmerSuppression(<?= $reservation['Id_reservation'] ?>)" title="Supprimer" style="background:none; border:none; cursor:pointer;">
                                     <i class="fa-solid fa-xmark" style="color: rgb(255, 77, 166);"></i>
                                 </button>
+=======
+>>>>>>> main
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -169,6 +179,7 @@ if (!empty($search)) {
 
         </form>
     </div>
+<<<<<<< HEAD
 
 <script>
 function confirmerSuppression(id) {
@@ -177,6 +188,8 @@ function confirmerSuppression(id) {
     }
 }
 </script>
+=======
+>>>>>>> main
 <script src="js/update.js"></script>
 </body>
 </html>

@@ -42,9 +42,9 @@ mysqli_close($conn);
 <body>
 
   <nav>
-    <a href="index.html">Accueil</a> |
-    <a href="localisation.html">Localisation</a> |
-    <a href="services.html">Réservation</a>
+    <a href="index.php">Accueil</a> |
+    <a href="localisation.php">Localisation</a> |
+    <a href="services.php">Réservation</a>
   </nav>
 
   <hr />
@@ -84,6 +84,7 @@ mysqli_close($conn);
       <input type="hidden" name="email"       id="final_email" />
       <input type="hidden" name="tel"         id="final_tel" />
 
+<<<<<<< HEAD
       <label>
         <input type="checkbox" id="conditions" />
         J'accepte les <a href="#">conditions générales</a> de Chichats.
@@ -94,6 +95,12 @@ mysqli_close($conn);
       &nbsp;&nbsp;
       <button type="button" onclick="confirmer()">Confirmer ma réservation ✓</button>
     </form>
+=======
+    <br /><br />
+    <button type="button" onclick="window.location.href='informations.php'">&larr; Retour</button>
+    &nbsp;&nbsp;
+    <button type="button" onclick="confirmer()">Confirmer ma réservation ✓</button>
+>>>>>>> main
 
   </div>
 
@@ -107,9 +114,9 @@ mysqli_close($conn);
     <br />
     <p>Un email de confirmation vous sera envoyé.</p>
     <br />
-    <button onclick="window.location.href='services.html'">Faire une nouvelle réservation</button>
+    <button onclick="window.location.href='services.php'">Faire une nouvelle réservation</button>
     &nbsp;&nbsp;
-    <button onclick="window.location.href='index.html'">Retour à l'accueil</button>
+    <button onclick="window.location.href='index.php'">Retour à l'accueil</button>
   </div>
 
   <script>

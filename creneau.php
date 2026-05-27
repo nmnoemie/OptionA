@@ -8,9 +8,9 @@
 <body>
 
   <nav>
-    <a href="index.html">Accueil</a> |
-    <a href="localisation.html">Localisation</a> |
-    <a href="services.html">Réservation</a>
+    <a href="index.php">Accueil</a> |
+    <a href="localisation.php">Localisation</a> |
+    <a href="services.php">Réservation</a>
   </nav>
 
   <hr />
@@ -63,9 +63,9 @@
   <em>Note : Les créneaux déjà réservés sont bloqués côté serveur.</em>
 
   <br /><br />
-  <button onclick="window.location.href='services.html'">&larr; Retour</button>
+  <button onclick="window.location.href='services.php'">&larr; Retour</button>
   &nbsp;&nbsp;
-  <button onclick="suivant()">Suivant &rarr;</button>
+  <button onclick="suivant()">Suivant →</button>
 
   <script>
     document.getElementById('date_rdv').value  = sessionStorage.getItem('date_rdv')  || '';
@@ -78,7 +78,7 @@
       if (heure === '') { alert('Veuillez choisir une heure.'); return; }
       sessionStorage.setItem('date_rdv',  date);
       sessionStorage.setItem('heure_rdv', heure);
-      window.location.href = 'informations.html';
+      window.location.href = 'informations.php';
     }
   </script>
 
