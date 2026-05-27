@@ -55,15 +55,15 @@ if (!empty($search)) {
         <section id="tableau">
             <h1>Liste des reservations</h1> <br>
             <form method="GET" action="dashboard.php">
-                <input type="text" name="search" placeholder="Rechercher un nom ou une date (AAAA-MM-JJ)..." value="<?= htmlspecialchars($search) ?>"> <br><br>
-                <button type="submit" class="btn btn--primary btn--lg">Rechercher</button>
+                <input type="text" name="search" placeholder="Rechercher un nom ou une date (AAAA-MM-JJ)..." value="<?= htmlspecialchars($search) ?>">
+                <button type="submit" class="btn btn--primary">Rechercher</button>
             </form>
             
             <hr>
             <?php if (isset($_GET['success'])) : ?>
-                <p style="color: rgb(255, 77, 166);">✅ Modification effectuée avec succès !</p>
+                <p class="success-msg">✅ Modification effectuée avec succès !</p>
             <?php endif; ?>
-            <table border="1" cellpadding="10">
+            <table class="reservation-table">
                 <thead>
                     <tr>
                         <th>id_reservation</th>

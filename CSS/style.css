@@ -515,3 +515,68 @@ td {
     color: var(--neon-cyan);
     transform: translateY(-2px);
 }
+
+/* ===== TABLEAU DASHBOARD ===== */
+#tableau {
+    max-width: 1100px;
+    margin: 4rem auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+#tableau form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 2.5rem;
+}
+
+#tableau form input {
+    max-width: 450px;
+    background: var(--bg-card);
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    color: var(--text-primary);
+    padding: 12px 25px;
+    font-family: var(--font-texte);
+}
+
+.reservation-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px; /* Crée l'effet de lignes séparées */
+    margin-top: 20px;
+}
+
+.reservation-table th {
+    font-family: var(--font-titre);
+    font-size: 1.1rem;
+    letter-spacing: 0.1em;
+    color: var(--neon-cyan);
+    padding: 15px;
+    text-transform: uppercase;
+    border-bottom: 2px solid rgba(34, 211, 238, 0.3);
+}
+
+.reservation-table td {
+    background: var(--bg-card);
+    padding: 18px 15px;
+    color: var(--text-primary);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Arrondis pour le début et la fin de chaque ligne */
+.reservation-table tr td:first-child { border-left: 1px solid rgba(255, 255, 255, 0.05); border-radius: 12px 0 0 12px; }
+.reservation-table tr td:last-child { border-right: 1px solid rgba(255, 255, 255, 0.05); border-radius: 0 12px 12px 0; }
+
+.reservation-table tr:hover td {
+    background: var(--bg-card-hover);
+    border-color: var(--neon-purple);
+    transition: all 0.2s ease;
+}
+
+.success-msg {
+    color: var(--neon-pink);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
