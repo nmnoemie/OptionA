@@ -206,7 +206,7 @@ if (!empty($search)) {
             <div class="modale__actions">
                 <button type="submit">Enregistrer</button>
                 <button type="button" onclick="fermerModale()">✖ Annuler</button>
-                <h1>hey</h1>
+                
             </div>
 
         </form>
