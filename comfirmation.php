@@ -1,3 +1,37 @@
+<?php
+
+$host     = "localhost";
+$user     = "root";
+$password = "";
+$database = "chichats";
+
+$conn = mysqli_connect($host, $user, $password, $database);
+if (!$conn) {
+    die("Erreur de connexion : " . mysqli_connect_error());
+}
+
+
+$enregistre = false;
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $Id_services = $_POST['Id_services'];
+    $date_rdv    = $_POST['date_rdv'];
+    $heure_rdv   = $_POST['heure_rdv'];
+    $nom_client  = $_POST['nom_client'];
+    $email       = $_POST['email'];
+    $tel         = $_POST['tel'];
+    $statut      = "en_attente";
+
+    $sql = "INSERT INTO reservation (date_rdv, heure_rdv, nom_client, email, tel, statut, Id_disponibilite, Id_services)
+            VALUES (?, ?, ?, ?, ?, ?, 1, ?)";
+
+    $stmt = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param($stmt, "ssssssi", $date_rdv, $heure_rdv, $nom_client, $email, $tel, $statut, $Id_services);
+    mysqli_stmt_execute($stmt);
+    $enregistre = true;
+}
+
+mysqli_close($conn);
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -42,15 +76,24 @@
 
     <br />
 
-    <label>
-      <input type="checkbox" id="conditions" />
-      J'accepte les <a href="#">conditions générales</a> de Chichats.
-    </label>
+    <form id="form-reservation" action="comfirmation.php" method="POST">
+      <input type="hidden" name="Id_services" id="final_service" />
+      <input type="hidden" name="date_rdv"    id="final_date" />
+      <input type="hidden" name="heure_rdv"   id="final_heure" />
+      <input type="hidden" name="nom_client"  id="final_nom" />
+      <input type="hidden" name="email"       id="final_email" />
+      <input type="hidden" name="tel"         id="final_tel" />
 
-    <br /><br />
-    <button type="button" onclick="window.location.href='informations.php'">&larr; Retour</button>
-    &nbsp;&nbsp;
-    <button type="button" onclick="confirmer()">Confirmer ma réservation ✓</button>
+      <label>
+        <input type="checkbox" id="conditions" />
+        J'accepte les <a href="#">conditions générales</a> de Chichats.
+      </label>
+
+      <br /><br />
+      <button type="button" onclick="window.location.href='informations.html'">&larr; Retour</button>
+      &nbsp;&nbsp;
+      <button type="button" onclick="confirmer()">Confirmer ma réservation ✓</button>
+    </form>
 
   </div>
 
@@ -88,6 +131,14 @@
     document.getElementById('recap-nom').textContent     = nom;
     document.getElementById('recap-email').textContent   = email;
     document.getElementById('recap-tel').textContent     = tel;
+
+    
+    document.getElementById('final_service').value = idService;
+    document.getElementById('final_date').value    = date;
+    document.getElementById('final_heure').value   = heure;
+    document.getElementById('final_nom').value     = nom;
+    document.getElementById('final_email').value   = email;
+    document.getElementById('final_tel').value     = tel;
 
     function confirmer() {
       if (!document.getElementById('conditions').checked) {

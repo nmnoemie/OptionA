@@ -106,7 +106,8 @@ main {
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    background-image: url("img/img_hero.png");
+    background-color: var(--bg-dark);
+    background-image: url('../img/img_hero.png');
     background-size: cover;
     background-position: center;
 }
@@ -396,3 +397,186 @@ input {
     outline: none;
     box-shadow: 0 0 5px rgba(0,0,0,0.2);
 }
+
+td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(10, 8, 18, 0.85);
+    backdrop-filter: blur(4px);
+    z-index: 99;
+}
+
+.modale {
+    display: none;
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--bg-card);
+    border: 1px solid rgba(255, 77, 166, 0.3);
+    box-shadow: 0 0 40px rgba(255, 77, 166, 0.15), 0 0 80px rgba(168, 85, 247, 0.1);
+    padding: 2.5rem;
+    border-radius: var(--radius-lg);
+    z-index: 100;
+    min-width: 380px;
+}
+
+.modale h2 {
+    font-family: var(--font-titre);
+    font-size: 2rem;
+    color: var(--neon-pink);
+    text-shadow: 0 0 20px rgba(255, 77, 166, 0.4);
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.05em;
+}
+
+.modale label {
+    color: var(--text-muted);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.modale input,
+.modale select {
+    width: 100%;
+    padding: 10px 16px;
+    margin-top: 6px;
+    background: var(--bg-dark);
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    border-radius: var(--radius);
+    color: var(--text-primary);
+    font-family: var(--font-texte);
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: none;
+}
+
+.modale input:focus,
+.modale select:focus {
+    border-color: var(--neon-pink);
+    box-shadow: 0 0 12px rgba(255, 77, 166, 0.2);
+}
+
+.modale select option {
+    background: var(--bg-card);
+    color: var(--text-primary);
+}
+
+.modale__actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.modale button[type="submit"] {
+    flex: 1;
+    padding: 12px;
+    background: var(--neon-pink);
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    font-family: var(--font-texte);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 0 24px rgba(255, 77, 166, 0.4);
+    transition: all 0.25s ease;
+}
+
+.modale button[type="submit"]:hover {
+    box-shadow: 0 0 40px rgba(255, 77, 166, 0.7);
+    transform: translateY(-2px);
+}
+
+.modale button[type="button"] {
+    flex: 1;
+    padding: 12px;
+    background: transparent;
+    color: var(--text-muted);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 999px;
+    font-family: var(--font-texte);
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.modale button[type="button"]:hover {
+    border-color: var(--neon-cyan);
+    color: var(--neon-cyan);
+    transform: translateY(-2px);
+}
+
+/* ===== TABLEAU DASHBOARD ===== */
+#tableau {
+    max-width: 1100px;
+    margin: 4rem auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+#tableau form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 2.5rem;
+}
+
+#tableau form input {
+    max-width: 450px;
+    background: var(--bg-card);
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    color: var(--text-primary);
+    padding: 12px 25px;
+    font-family: var(--font-texte);
+}
+
+.reservation-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px; /* Crée l'effet de lignes séparées */
+    margin-top: 20px;
+}
+
+.reservation-table th {
+    font-family: var(--font-titre);
+    font-size: 1.1rem;
+    letter-spacing: 0.1em;
+    color: var(--neon-cyan);
+    padding: 15px;
+    text-transform: uppercase;
+    border-bottom: 2px solid rgba(34, 211, 238, 0.3);
+}
+
+.reservation-table td {
+    background: var(--bg-card);
+    padding: 18px 15px;
+    color: var(--text-primary);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Arrondis pour le début et la fin de chaque ligne */
+.reservation-table tr td:first-child { border-left: 1px solid rgba(255, 255, 255, 0.05); border-radius: 12px 0 0 12px; }
+.reservation-table tr td:last-child { border-right: 1px solid rgba(255, 255, 255, 0.05); border-radius: 0 12px 12px 0; }
+
+.reservation-table tr:hover td {
+    background: var(--bg-card-hover);
+    border-color: var(--neon-purple);
+    transition: all 0.2s ease;
+}
+
+.success-msg {
+    color: var(--neon-pink);
+    margin-bottom: 1.5rem;
+    font-weight: 500;

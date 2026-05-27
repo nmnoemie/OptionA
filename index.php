@@ -4,7 +4,6 @@ require_once '../OptionA/data.php';
 $sql= "SELECT * FROM services";
 $result = $pdo->query($sql);
 $services = $result->fetchAll();
-
 ?>
 
 <!DOCTYPE html>
@@ -13,8 +12,13 @@ $services = $result->fetchAll();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chichats - Réservation de table</title>
+<<<<<<< HEAD
     
     <link rel="stylesheet" href="CSS/style.css">
+=======
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+>>>>>>> 25d65379ede50b06bbcd673a1df673a8ee537fba
 </head>
 <body>
     <header class="hero">
@@ -52,7 +56,7 @@ $services = $result->fetchAll();
                         </div>
 
                         <div class="shop-name">
-                            Durée : <?= htmlspecialchars($service['durree_minutes']) ?> min
+                            Durée : <?= htmlspecialchars($service['duree_minutes']) ?> min
                         </div>
 
                         <div class="description">
@@ -65,8 +69,6 @@ $services = $result->fetchAll();
             </div>
             <?php endforeach; ?>
         </section>
-        
-    
         
         <section id="call-to-action" class="cta">
             <div class="cta__glow"></div>
