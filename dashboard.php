@@ -166,8 +166,10 @@ if (!empty($search)) {
                 </select>
             </label><br><br>
 
-            <button type="submit">💾 Enregistrer</button> 
-            <button type="button" onclick="fermerModale()">✖ Annuler</button>
+            <div class="modale__actions">
+                <button type="submit">💾 Enregistrer</button>
+                <button type="button" onclick="fermerModale()">✖ Annuler</button>
+            </div>
 
         </form>
     </div>
