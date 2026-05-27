@@ -80,13 +80,17 @@ if (!empty($search)) {
                 <div class="form-actions-container">
                     <button type="submit" class="btn btn--primary btn--lg">Rechercher</button>
                     
-                    <a href="services.php" class="btn btn--success-github btn--lg">New</a>
+                    <a href="create.php" class="btn btn--success-github btn--lg">+ New</a>
+
                 </div>
             </form>
             
             <hr>
             <?php if (isset($_GET['success'])) : ?>
                 <p class="success-msg">✅ Modification effectuée avec succès !</p>
+            <?php endif; ?>
+            <?php if (isset($_GET['created'])) : ?>
+                <p class="success-msg">✅ Réservation créée avec succès !</p>
             <?php endif; ?>
             <table class="reservation-table">
                 <thead>
