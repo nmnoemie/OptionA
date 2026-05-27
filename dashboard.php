@@ -1,5 +1,43 @@
 <?php
-require_once 'data.php';
+require_once 'data.php'; // Votre fichier de connexion qui contient la variable $pdo
+
+// --- LOGIQUE POUR LE BOUTON NEW ---
+if (isset($_GET['action']) && $_GET['action'] === 'create') {
+    try {
+        // On prépare des données par défaut ou temporaires
+        $nom_defaut = "Nouvelle réservation (En attente)";
+        $date_defaut = date('Y-m-d'); // Date du jour
+        $heure_defaut = "19:00";
+        $tel_defaut = "0600000000";
+
+        $sql_insert = "INSERT INTO reservation (nom_client, date_rdv, heure_rdv, tel) 
+                       VALUES (:nom, :date_rdv, :heure_rdv, :tel)";
+        
+        $stmt_insert = $pdo->prepare($sql_insert);
+        $stmt_insert->execute([
+            ':nom'       => $nom_defaut,
+            ':date_rdv'  => $date_defaut,
+            ':heure_rdv' => $heure_defaut,
+            ':tel'       => $tel_defaut
+        ]);
+
+        // Une fois inséré, on recharge la page proprement pour afficher la nouvelle ligne
+        header("Location: dashboard.php");
+        exit;
+
+    } catch (PDOException $e) {
+        die("Erreur lors de la création automatique : " . $e->getMessage());
+    }
+}
+
+// --- LE RESTE DE VOTRE CODE DE RECHERCHE EXISTANT ---
+$search = isset($_GET['search']) ? trim($_GET['search']) : '';
+if (!empty($search)) {
+    // ... votre code de filtrage existant ...
+} else {
+    // ... votre code d'affichage global existant ...
+}
+?>
 
 // On récupère le terme de recherche s'il existe
 $search = isset($_GET['search']) ? trim($_GET['search']) : '';
